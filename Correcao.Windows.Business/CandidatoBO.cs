@@ -59,7 +59,7 @@ namespace Correcao.Windows.Business
         {
             Thread.Sleep(3000);
 
-            const int QUANTIDADE_CANDIDATOS = 10;
+            const int QUANTIDADE_CANDIDATOS = 1000;
             List<Candidato> candidatos;
 
             var questoes = QuestaoBO.GetQuestoes();
