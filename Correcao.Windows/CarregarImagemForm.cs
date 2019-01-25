@@ -102,8 +102,22 @@ namespace Correcao.Windows
 
         private void GerarCandidatos()
         {
-            CandidatoBO.GerarCandidatos();
-        }        
+            Queue<Thread> threadBuffer = new Queue<Thread>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Thread thread = new Thread(new ThreadStart(CandidatoBO.GerarCandidatos));
+                thread.IsBackground = true;
+                threadBuffer.Enqueue(thread);
+            }
+
+            while (threadBuffer.Count > 0)
+            {
+                Thread t = threadBuffer.Dequeue();
+                t.Start();
+                Thread.Sleep(3000);
+            }            
+        }
 
         #endregion
 

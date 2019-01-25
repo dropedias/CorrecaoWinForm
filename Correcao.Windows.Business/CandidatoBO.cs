@@ -7,6 +7,7 @@ using System.IO;
 using System.Drawing;
 using Correcao.Windows.Business.BusinessEntity;
 using NHibernate;
+using System.Threading;
 
 namespace Correcao.Windows.Business
 {
@@ -56,6 +57,8 @@ namespace Correcao.Windows.Business
 
         public void GerarCandidatos()
         {
+            Thread.Sleep(3000);
+
             const int QUANTIDADE_CANDIDATOS = 10;
             List<Candidato> candidatos;
 
@@ -63,19 +66,7 @@ namespace Correcao.Windows.Business
 
             foreach (var questao in questoes)
             {
-                candidatos = new List<Candidato>();
-
-                //Parallel.For(
-                //        0, QUANTIDADE_CANDIDATOS, new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount },
-                //        i =>
-                //        {
-                //            var candidato = new Candidato();
-                //            candidato.Nome = string.Format("Fulano da Silva {0}-{1}", i, questao.IdQuestao);
-                //            candidato.Imagem = GerarImagemCandidato(candidato.Nome, questao.IdQuestao);
-                //            candidato.Questoes.Add(questao);
-
-                //            candidatos.Add(candidato);
-                //        });                
+                candidatos = new List<Candidato>();                            
 
                 for (int i = 0; i < QUANTIDADE_CANDIDATOS; i++)
                 {
